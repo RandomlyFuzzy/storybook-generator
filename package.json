@@ -1,0 +1,13 @@
+{
+  "name": "bookideas-pipeline",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Procedural scene, character, and location generators for book ideas",
+  "scripts": {
+    "subject": "node tools/subject/index.mjs",
+    "character": "node tools/character/index.mjs",
+    "location": "node tools/location/index.mjs",
+    "scene": "node index.js",
+    "start": "node index.js"
+  }
+}

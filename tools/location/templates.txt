@@ -1,0 +1,6 @@
+The {adj} {type} stood {prep1}: {Sight}. {Sound}. {Smell}. {Atmosphere}. Among its features: {Feature}.
+{Atmosphere}. The {adj} {type} was {prep1}. {Sight}. {Sound}. {Smell}. {Feature}.
+{Sight}. {Sound}. {Smell}. This was the {adj} {type} — {atmosphere}. {Feature}.
+The {adj} {type}. {Sight}. {Sound}. {Smell}. {Atmosphere}. {Feature}.
+{Sight}. {Sound}. {Smell}. {Atmosphere}. The {adj} {type} {feature}.
+{Atmosphere}. {Sight}. {Sound}. {Smell}. The {adj} {type} {feature}.

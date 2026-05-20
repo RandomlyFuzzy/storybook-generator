@@ -1,0 +1,8 @@
+{Prefix} {fullname}. {Appearance}. {Clothing}. {Demeanor}. {History}.
+{Prefix} {fullname}. {Appearance}. {Demeanor}. {Clothing}. The kind of person who {history}.
+{Fullname}, {appearance}. {Clothing}. {Demeanor}. {History}.
+{Fullname} — {appearance}. {Clothing}. There was something about them that {demeanor} — {history}.
+{Prefix} {fullname}, and the name itself seemed to carry the weight of {history}. {Appearance}. {Clothing}. {Demeanor}.
+{Fullname} cut a striking figure: {appearance}. {Clothing}. {Demeanor}. {History}. That was who they were.
+{Appearance}. {Clothing}. {Fullname} {demeanor}. {History}.
+{Fullname} was {appearance}. {Clothing} only added to the impression. {Demeanor}. {History}.
