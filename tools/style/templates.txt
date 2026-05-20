@@ -1,0 +1,5 @@
+A {mood} {name} style in {media}. {Palette}. {Texture} {detail}.
+{Name} — {media} with {palette}. {Mood} {texture} {detail}.
+A {mood} {name} illustration: {media}, {palette}. {Texture} {detail}.
+{Media} with {palette}. {Mood} {texture} {detail}.
+{Name} style: {mood} {media}. {Palette}. {Texture} {detail}.

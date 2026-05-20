@@ -1,8 +1,10 @@
 import { generate as genSubject } from './tools/subject/index.mjs';
 import { generate as genCharacter } from './tools/character/index.mjs';
 import { generate as genLocation } from './tools/location/index.mjs';
+import { generate as genStyle } from './tools/style/index.mjs';
 
 const scene = {
+  style: genStyle(),
   subject: genSubject(),
   character: genCharacter(),
   location: genLocation(),
