@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "styleAddOn": {
+      "type": "string"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description"
+        ]
+      }
+    },
+    "target_age": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      }
+    },
+    "theme": {
+      "type": "string"
+    },
+    "front_cover": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "image_Prompt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "subtitle",
+        "image_Prompt"
+      ]
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "number"
+          },
+          "subtitle": {
+            "type": "string"
+          },
+          "image_Prompt": {
+            "type": "string"
+          },
+          "characters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "scene_description": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "scene_description"
+              ]
+            }
+          }
+        },
+        "required": [
+          "page",
+          "subtitle",
+          "image_Prompt",
+          "characters"
+        ]
+      }
+    },
+    "back_cover": {
+      "type": "object",
+      "properties": {
+        "image_prompt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "image_prompt"
+      ]
+    }
+  },
+  "required": [
+    "styleAddOn",
+    "characters",
+    "target_age",
+    "theme",
+    "front_cover",
+    "pages",
+    "back_cover"
+  ]
+}

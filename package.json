@@ -9,6 +9,10 @@
     "location": "node tools/location/index.mjs",
     "style": "node tools/style/index.mjs",
     "scene": "node index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "story": "node story.js"
+  },
+  "dependencies": {
+    "ollama": "^0.6.3"
   }
 }

@@ -31,7 +31,7 @@ function fill(template, vars) {
   });
 }
 
-export function generate() {
+export function generate(fullnameOverride) {
   const prefixes = loadLines('prefixes.txt');
   const namesMale = loadLines('names_male.txt');
   const namesFemale = loadLines('names_female.txt');
@@ -44,7 +44,10 @@ export function generate() {
 
   const first = Math.random() > 0.5 ? pick(namesMale) : pick(namesFemale);
   const last = pick(surnames);
-  const fullname = `${first} ${last}`;
+  let fullname = `${first} ${last}`;
+  if (typeof fullnameOverride === 'string' && fullnameOverride.trim().length > 0) {
+    fullname = fullnameOverride.trim();
+  }
 
   const data = {
     prefix: prefixes,
@@ -55,9 +58,10 @@ export function generate() {
     history: histories,
   };
 
-  return fill(pick(templates), data);
+  const rendered = fill(pick(templates), data);
+  return { name: fullname, description: rendered };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  console.log(generate());
+  console.log(JSON.stringify(generate(process.argv[2]), null, 2));
 }

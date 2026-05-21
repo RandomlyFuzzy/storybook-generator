@@ -2,3 +2,8 @@ node_modules/
 .DS_Store
 *.log
 .env
+output/
+output_failed_*.json
+story_prompt.txt
+review.md
+flower.webp

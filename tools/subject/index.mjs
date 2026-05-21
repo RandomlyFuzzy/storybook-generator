@@ -29,7 +29,11 @@ function fill(template, vars) {
   });
 }
 
-export function generate() {
+export function generate(override) {
+  if (typeof override === 'string' && override.trim().length > 0) {
+    return capitalise(override.trim());
+  }
+
   const data = {
     opening: loadLines('openings.txt'),
     subject: loadLines('subjects.txt'),
@@ -44,5 +48,5 @@ export function generate() {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  console.log(generate());
+  console.log(generate(process.argv[2]));
 }
