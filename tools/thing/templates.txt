@@ -1,0 +1,6 @@
+{Prefix} {name}, a {adjective} {type}. {Property}. {Origin}.
+{Name} was {adjective} {type}. {Prefix} {property}. {Origin}.
+{Prefix} {name}, a {type} that was {adjective}. {Property}. {Origin}.
+{Name} was no ordinary {type} — it was {adjective}. {Property}. {Origin}.
+{Prefix} {name}. This {adjective} {type} had the power to {property}. {Origin}.
+{Adjective} and wonderful, {name} the {type} was {property}. {Origin}.

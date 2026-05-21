@@ -3,6 +3,8 @@ import fs from 'fs';
 import { spawn } from 'child_process';
 import { generate as genSubject } from './tools/subject/index.mjs';
 import { generate as genCharacter } from './tools/character/index.mjs';
+import { generate as genAnimal } from './tools/animal/index.mjs';
+import { generate as genThing } from './tools/thing/index.mjs';
 import { generate as genLocation } from './tools/location/index.mjs';
 import { generate as genStyle } from './tools/style/index.mjs';
 import { generate as genTheme } from './tools/theme/index.mjs';
@@ -45,6 +47,8 @@ function generateMany(generator, spec) {
 }
 
 const charactersSpec = parseSpec(raw.characters || raw.character || raw.chars);
+const animalsSpec = parseSpec(raw.animals || raw.animal);
+const thingsSpec = parseSpec(raw.things || raw.thing);
 const locationsSpec = parseIntOr(undefined, raw.locations || raw.location || raw.locs);
 const styleSpec = parseIntOr(undefined, raw.style || raw.s);
 const subjectSpec = parseIntOr(undefined, raw.subject || raw.sub);
@@ -55,6 +59,8 @@ const scene = {
   style: generateMany(genStyle, styleSpec),
   subject: generateMany(genSubject, subjectSpec),
   characters: generateMany(genCharacter, charactersSpec),
+  animals: generateMany(genAnimal, animalsSpec),
+  things: generateMany(genThing, thingsSpec),
   locations: generateMany(genLocation, locationsSpec),
 };
 
@@ -73,6 +79,21 @@ function buildPrompt(sceneObj, pageCount) {
     description: String(c.description || ''),
   }));
 
+  const animalInfos = (sceneObj.animals || []).filter(Boolean).map(a => String(a));
+
+  const thingInfos = (sceneObj.things || []).filter(Boolean).map(t => String(t));
+
+  const hasAnimals = animalInfos.length > 0;
+  const hasThings = thingInfos.length > 0;
+
+  let optionalSections = '';
+  if (hasAnimals) {
+    optionalSections += `\n- animals (array of { name: string, description: string }) - OPTIONAL animal characters/companions in the story. Include this only if the animal(s) play a role in the story. Use the provided animal descriptions to derive names and weave them into the story.\n`;
+  }
+  if (hasThings) {
+    optionalSections += `\n- things (array of { name: string, description: string }) - OPTIONAL special objects or magical items in the story. Include this only if the thing(s) play a role in the story. Use the provided item descriptions to derive names and weave them into the story.\n`;
+  }
+
   return `Output ONLY valid JSON that matches this schema exactly. No surrounding text, no markdown, no explanation.
 
 Required top-level keys:
@@ -83,11 +104,12 @@ Required top-level keys:
 - front_cover (object: { title: string, subtitle: string, image_Prompt: string })
 - pages (array of ${pageCount} objects, each with: { page: number, subtitle: string, image_Prompt: string, characters: array of { name: string, in_scene: string } })
   - NOTE: Page characters array: ONLY use name of characters shown (from top-level list), and 'in_scene' describes what they're DOING/FEELING/ACTING in this specific scene. Example: { "name": "Olympia", "in_scene": "standing nervously at the entrance, clutching her postcard tightly, eyes wide with hesitation" }
-- back_cover (object: { image_prompt: string })
-
+- back_cover (object: { image_prompt: string })${optionalSections}
 Use these exact values for the corresponding keys:
   styleAddOn = "${styleAddon}"
   characters = ${JSON.stringify(charInfos)}
+  ${hasAnimals ? `animal_descriptions = ${JSON.stringify(animalInfos)}  // Use these to create the animals array in your output` : '// no animals provided'}
+  ${hasThings ? `thing_descriptions = ${JSON.stringify(thingInfos)}  // Use these to create the things array in your output` : '// no things provided'}
   target_age = ${JSON.stringify(targetAgeArr)}
   theme = "${theme}"
   subject = "${subject}"
@@ -102,8 +124,8 @@ Page Content Rules:
 - Each page's subtitle MUST be 1-2 complete sentences describing the key action, dialogue, or emotion of that page. Do NOT use short phrases. Tell what happens on this page.
 - Include character speech/dialogue with quotation marks whenever characters speak. Dialogue makes the story feel alive! Example: "Come inside," whispered Mia, "the fort has glowing secrets waiting for us."
 - Each page's subtitle must advance the story. Example good subtitle: "Olympia hesitated at the fort's dark entrance, clutching her lucky postcard while a soft glow flickered from within. 'Are you sure about this?' she called out to her invisible friend."
-- Each page's characters array: ONLY list characters VISIBLE on that page, by NAME (from the top-level characters list), plus an 'in_scene' field that describes WHAT THEY ARE DOING in this specific moment - their pose, action, expression, posture. DO NOT repeat their full character description. Good example: { "name": "Olympia", "in_scene": "crouching down to peek inside, one hand covering her mouth in surprise" }. Bad example: { "name": "Olympia", "in_scene": "There stood Olympia Vaughn with gumboots..." } (repeating full desc)
-- Weave the locations naturally into each image_Prompt based on what happens in the scene.
+- Each page's characters array: ONLY list characters VISIBLE on that page, by NAME (from the top-level characters/animals list), plus an 'in_scene' field that describes WHAT THEY ARE DOING in this specific moment - their pose, action, expression, posture. DO NOT repeat their full character description. Good example: { "name": "Olympia", "in_scene": "crouching down to peek inside, one hand covering her mouth in surprise" }. Bad example: { "name": "Olympia", "in_scene": "There stood Olympia Vaughn with gumboots..." } (repeating full desc). Animals can also appear in the per-page characters array by name.
+${hasThings ? `- Weave the provided magical items/things into the story as important plot elements. They can appear in image_Prompt descriptions and be central to the story.\n` : ''}- Weave the locations naturally into each image_Prompt based on what happens in the scene.
 - Generate ${pageCount} pages with varied, creative content that tells a complete, emotionally satisfying story.
 - Return ONLY the JSON object — no markdown, no code fences, no explanation.`;
 }

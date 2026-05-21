@@ -1,0 +1,40 @@
+crystal
+amulet
+locket
+compass
+key
+pocket watch
+music box
+lantern
+mirror
+spyglass
+journal
+paintbrush
+globe
+spinning top
+marble
+candle
+bell
+feather
+stone
+shell
+acorn
+map
+badge
+crown
+ring
+bracelet
+brooch
+teacup
+cookie jar
+seed
+ornament
+spoon
+quill
+bookmark
+whistle
+magnifying glass
+snow globe
+hourglass
+telescope
+thermos

@@ -6,11 +6,14 @@
   "scripts": {
     "subject": "node tools/subject/index.mjs",
     "character": "node tools/character/index.mjs",
+    "animal": "node tools/animal/index.mjs",
+    "thing": "node tools/thing/index.mjs",
     "location": "node tools/location/index.mjs",
     "style": "node tools/style/index.mjs",
     "scene": "node index.js",
     "start": "node index.js",
     "story": "node story.js",
+    "story:agent": "node story-agent.mjs",
     "compile": "node story-compiler.mjs"
   },
   "dependencies": {

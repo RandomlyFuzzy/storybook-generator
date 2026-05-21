@@ -1,0 +1,6 @@
+{Prefix} {name} the {type}. {Appearance}. {Personality}. {Special}.
+{Name} the {type} — {appearance}. {Personality}. {Special}.
+{Prefix} {name}, a {type} with {appearance}. {Personality}. {Special}.
+{Name} was a {type} unlike any other: {appearance}. {Personality}. {Special}.
+{Prefix} {name}, a {type} who {personality}. {Appearance}. {Special}.
+{Name} the {type} had {appearance}. Their {personality} made them special, and {special}.
