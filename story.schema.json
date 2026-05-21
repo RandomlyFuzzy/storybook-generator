@@ -74,13 +74,13 @@
                 "name": {
                   "type": "string"
                 },
-                "scene_description": {
+                "description": {
                   "type": "string"
                 }
               },
               "required": [
                 "name",
-                "scene_description"
+                "description"
               ]
             }
           }

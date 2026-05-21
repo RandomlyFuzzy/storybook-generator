@@ -81,7 +81,7 @@ Required top-level keys:
 - target_age (array of numbers, e.g. [3, 5])
 - theme (string)
 - front_cover (object: { title: string, subtitle: string, image_Prompt: string })
-- pages (array of ${pageCount} objects, each with: { page: number, subtitle: string, image_Prompt: string, characters: array of { name: string, scene_description: string } })
+- pages (array of ${pageCount} objects, each with: { page: number, subtitle: string, image_Prompt: string, characters: array of { name: string, description: string } })
 - back_cover (object: { image_prompt: string })
 
 Use these exact values for the corresponding keys:
@@ -314,10 +314,19 @@ async function main() {
   for (let attempt = 1; attempt <= maxRetries + 1; attempt++) {
     let currentPrompt = basePrompt;
 
-    if (attempt > 1 && lastResult && lastResult.errors && lastResult.errors.length > 0) {
-      const errorList = lastResult.errors.map((e, i) => `${i + 1}. ${e}`).join('\n');
-      currentPrompt = basePrompt + '\n\nPREVIOUS ATTEMPT FAILED VALIDATION. FIX THESE ISSUES:\n' + errorList +
-        '\n\nIMPORTANT: Return ONLY valid JSON matching the schema. Fix the validation errors above.';
+    if (attempt > 1 && lastResult) {
+      if (lastResult.errors && lastResult.errors.length > 0) {
+        const errorList = lastResult.errors.map((e, i) => `${i + 1}. ${e}`).join('\n');
+        currentPrompt = basePrompt + '\n\n=== PREVIOUS ATTEMPT FAILED SCHEMA VALIDATION ===\nYou returned JSON but it had these problems:\n' + errorList +
+          '\n\nFIX THESE ISSUES and return ONLY valid JSON matching the required schema exactly.';
+      } else if (lastResult.raw && !lastResult.parsed) {
+        const rawPreview = lastResult.raw.length > 1000
+          ? lastResult.raw.slice(0, 1000) + '\n... (truncated - total length: ' + lastResult.raw.length + ' chars)'
+          : lastResult.raw;
+        currentPrompt = basePrompt +
+          '\n\n=== PREVIOUS ATTEMPT FAILED - COULD NOT EXTRACT VALID JSON ===\nThis is what you returned (first 1000 chars):\n"""\n' + rawPreview + '\n"""\n' +
+          '\nYOU MUST RETURN ONLY VALID JSON. No markdown code fences, no explanation text, no extra content before or after. Just the { } JSON object.';
+      }
     }
 
     if (verbose || attempt > 1) {
