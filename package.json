@@ -10,7 +10,8 @@
     "style": "node tools/style/index.mjs",
     "scene": "node index.js",
     "start": "node index.js",
-    "story": "node story.js"
+    "story": "node story.js",
+    "compile": "node story-compiler.mjs"
   },
   "dependencies": {
     "ollama": "^0.6.3"
