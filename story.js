@@ -77,11 +77,12 @@ function buildPrompt(sceneObj, pageCount) {
 
 Required top-level keys:
 - styleAddOn (string)
-- characters (array of { name: string, description: string })
+- characters (array of { name: string, description: string }) - all main characters in the story (full descriptions)
 - target_age (array of numbers, e.g. [3, 5])
 - theme (string)
 - front_cover (object: { title: string, subtitle: string, image_Prompt: string })
-- pages (array of ${pageCount} objects, each with: { page: number, subtitle: string, image_Prompt: string, characters: array of { name: string, description: string } })
+- pages (array of ${pageCount} objects, each with: { page: number, subtitle: string, image_Prompt: string, characters: array of { name: string, in_scene: string } })
+  - NOTE: Page characters array: ONLY use name of characters shown (from top-level list), and 'in_scene' describes what they're DOING/FEELING/ACTING in this specific scene. Example: { "name": "Olympia", "in_scene": "standing nervously at the entrance, clutching her postcard tightly, eyes wide with hesitation" }
 - back_cover (object: { image_prompt: string })
 
 Use these exact values for the corresponding keys:
@@ -101,7 +102,7 @@ Page Content Rules:
 - Each page's subtitle MUST be 1-2 complete sentences describing the key action, dialogue, or emotion of that page. Do NOT use short phrases. Tell what happens on this page.
 - Include character speech/dialogue with quotation marks whenever characters speak. Dialogue makes the story feel alive! Example: "Come inside," whispered Mia, "the fort has glowing secrets waiting for us."
 - Each page's subtitle must advance the story. Example good subtitle: "Olympia hesitated at the fort's dark entrance, clutching her lucky postcard while a soft glow flickered from within. 'Are you sure about this?' she called out to her invisible friend."
-- Each page's characters array lists only characters visible on that page (by name and description).
+- Each page's characters array: ONLY list characters VISIBLE on that page, by NAME (from the top-level characters list), plus an 'in_scene' field that describes WHAT THEY ARE DOING in this specific moment - their pose, action, expression, posture. DO NOT repeat their full character description. Good example: { "name": "Olympia", "in_scene": "crouching down to peek inside, one hand covering her mouth in surprise" }. Bad example: { "name": "Olympia", "in_scene": "There stood Olympia Vaughn with gumboots..." } (repeating full desc)
 - Weave the locations naturally into each image_Prompt based on what happens in the scene.
 - Generate ${pageCount} pages with varied, creative content that tells a complete, emotionally satisfying story.
 - Return ONLY the JSON object — no markdown, no code fences, no explanation.`;
