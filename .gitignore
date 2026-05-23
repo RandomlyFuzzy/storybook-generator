@@ -7,3 +7,4 @@ output_failed_*.json
 story_prompt.txt
 review.md
 flower.webp
+review_raw_*.txt

@@ -61,7 +61,8 @@
             "type": "number"
           },
           "subtitle": {
-            "type": "string"
+            "type": "string",
+            "minLength": 50
           },
           "image_Prompt": {
             "type": "string"
@@ -83,13 +84,59 @@
                 "in_scene"
               ]
             }
+          },
+          "animals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "in_scene": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "in_scene"
+              ]
+            }
+          },
+          "things": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "in_scene": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "in_scene"
+              ]
+            }
           }
         },
         "required": [
           "page",
           "subtitle",
-          "image_Prompt",
-          "characters"
+          "image_Prompt"
+        ],
+        "anyOf": [
+          {
+            "required": ["characters"]
+          },
+          {
+            "required": ["animals"]
+          },
+          {
+            "required": ["things"]
+          }
         ]
       }
     },

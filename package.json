@@ -14,9 +14,13 @@
     "start": "node index.js",
     "story": "node story.js",
     "story:agent": "node story-agent.mjs",
+    "review": "node review-agent.mjs",
     "compile": "node story-compiler.mjs"
   },
   "dependencies": {
-    "ollama": "^0.6.3"
+    "node-fetch": "^3.3.2",
+    "ollama": "^0.6.3",
+    "sharp": "^0.34.5",
+    "ws": "^8.20.1"
   }
 }

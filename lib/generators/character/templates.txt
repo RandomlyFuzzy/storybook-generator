@@ -1,0 +1,10 @@
+{Fullname}. Race: {race}. Hair: {haircolor}, {hairlength}. Eyes: {eyecolor}. Clothing: {clothing}. Appearance: {appearance}.
+Personality: {demeanor}. History: {history}.
+{Fullname} is a child with {appearance}, often seen wearing {clothing}. Known for being someone who {demeanor}, their story includes how they {history}.
+{Prefix} {fullname} stands out because of {appearance} and their favorite {clothing}. Their friends say they always {demeanor}. Once, they {history}.
+Everyone in the neighborhood recognizes {fullname} by {appearance} and {clothing}. People admire how they {demeanor}. Their background: they {history}.
+{Fullname} has {appearance} and a unique style: {clothing}. They are best described as someone who {demeanor}. A memorable fact: they {history}.
+{Prefix} {fullname} is remembered for {appearance} and {clothing}. Their personality shines through in how they {demeanor}. Their past includes when they {history}.
+With {appearance} and always dressed in {clothing}, {fullname} is the type who {demeanor}. Their story: they {history}.
+{Fullname} is described as having {appearance} and a love for {clothing}. They are known to {demeanor}. Notably, they {history}.
+{Prefix} {fullname}—{appearance}, {clothing}, and a tendency to {demeanor}. Their history: they {history}.

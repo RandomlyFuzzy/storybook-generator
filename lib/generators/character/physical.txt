@@ -1,0 +1,38 @@
+# Example values for race, hair color, hair length, and eye color
+Asian
+Black
+White
+Latino
+Native American
+Middle Eastern
+South Asian
+Mixed race
+
+# Hair color
+black hair
+brown hair
+blonde hair
+red hair
+gray hair
+white hair
+blue hair
+pink hair
+purple hair
+
+# Hair length
+short hair
+shoulder-length hair
+long hair
+very short hair
+curly hair
+straight hair
+wavy hair
+
+# Eye color
+brown eyes
+blue eyes
+green eyes
+gray eyes
+hazel eyes
+amber eyes
+violet eyes

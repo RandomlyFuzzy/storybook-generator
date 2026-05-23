@@ -17,7 +17,7 @@ echo "Generating $COUNT stories into $OUTDIR/$DATE/ ..."
 for i in $(seq 1 $COUNT)
 do
   # Let story.js handle output file naming by title in the output directory
-  node story.js --pages "$PAGES" --out "$OUTDIR/$DATE" --verbose
+  node ./lib/story.js --pages "$PAGES" --out "$OUTDIR/$DATE" --verbose
 done
 
 echo "Batch generation complete."
