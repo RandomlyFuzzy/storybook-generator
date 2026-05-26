@@ -1,6 +1,7 @@
 import fs from 'fs';
 import sharp from 'sharp';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { StoryPageCompiler } from './lib/story-compiler.mjs';
 import { ImageGenerator, AspectRatio } from './lib/image-generator.mjs';
 
@@ -8,8 +9,8 @@ import { ImageGenerator, AspectRatio } from './lib/image-generator.mjs';
 // === CONFIGURATION (with CLI args) ===
 // Usage: node StoryToImage.js <storyPath> <title> <rel> <aspectRatio>
 const args = process.argv.slice(2);
-const reviewedStoryPath = args[0] || './output/autoReviewed/05-21/The%20Box%20of%20Forgotten%20Stars.json';
-const title = args[1] || "The Box of Forgotten Stars";
+const reviewedStoryPath = args[0] || './output/autoReviewed/05-21/The_Box_of_Forgotten_Stars.json';
+const title = args[1] || 'The Box of Forgotten Stars';
 const rel = args[2] || '05-21';
 const aspectArg = args[3] || 'LANDSCAPE';
 const aspectRatio = AspectRatio[aspectArg.toUpperCase()] || AspectRatio.LANDSCAPE;
@@ -226,8 +227,7 @@ async function main() {
 						return lines;
 					}
 					// Embed MarkoOne-Regular font in SVG (ESM-compatible __dirname)
-					const __filename = import.meta && import.meta.url ? new URL(import.meta.url).pathname : __filename;
-					const __dirname = path.dirname(__filename);
+					const __dirname = path.dirname(fileURLToPath(import.meta.url));
 					const fontPath = path.resolve(__dirname, 'MarkoOne-Regular.ttf');
 					const fontData = fs.readFileSync(fontPath).toString('base64');
 					const fontFace = `@font-face { font-family: 'MarkoOne'; src: url(data:font/ttf;base64,${fontData}) format('truetype'); }`;

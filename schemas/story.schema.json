@@ -48,7 +48,6 @@
       },
       "required": [
         "title",
-        "subtitle",
         "image_Prompt"
       ]
     },
@@ -60,7 +59,7 @@
           "page": {
             "type": "number"
           },
-          "subtitle": {
+          "text": {
             "type": "string",
             "minLength": 50
           },
@@ -124,7 +123,7 @@
         },
         "required": [
           "page",
-          "subtitle",
+          "text",
           "image_Prompt"
         ],
         "anyOf": [
